@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class restaurantes extends Model
 {
     use HasFactory;
-    //use Softdeletes;
+//    use Softdeletes;
     
     protected $primaryKey='idres';
     protected $fillable=['idres','razonsocial','nombrecontacto','correo','telefono','rfc','cp','idcat','idest','idmun'];

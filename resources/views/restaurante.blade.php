@@ -24,6 +24,14 @@
                         @foreach ($resta as $res)
                         <tr>
                             <td class="center">{{$res->idres}}</td>
+                            <td class="center">{{$res->razonsocial}}</td>
+                            <td class="center">{{$res->nombrecontacto}}</td>
+                            <td class="center">{{$res->correo}}</td>
+                            <td class="center">{{$res->telefono}}</td>
+                            <td class="center">{{$res->rfc}}</td>
+                            <td class="center">{{$res->cp}}</td>
+                            <td class="center">{{$res->idcat}}</td>
+                            <td class="center">{{$res->idmun}}</td>
                             <td>
                                 <div class="hidden-sm hidden-xs action-buttons center">
 
@@ -31,7 +39,7 @@
                                         <i class="ace-icon fa fa-pencil bigger-130"></i>
                                     </a>
 
-                                    <a class="red" href="#">
+                                    <a class="red" href="{{route('desacres',['idres'=>$res->idres])}}">
                                         <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                     </a>
                                 </div>
@@ -72,27 +80,6 @@
                             </td>
                         </tr>
                         @endforeach
-                        <tr>
-                            <td class="center">
-                                
-                            </td>
-
-                            <td>
-                                Juan
-                            </td>
-                            <td>Perez</td>
-                            <td >Perez</td>
-                            <td>Masculino</td>
-
-                            <td >
-                                Hola
-                            </td>
-
-                            
-                        </tr>
-
-                        
-
                     </tbody>
                 </table>
             </div>

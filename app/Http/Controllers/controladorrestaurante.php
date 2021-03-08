@@ -55,16 +55,11 @@ class controladorrestaurante extends Controller
         return view ('mensaje')->with('proceso','Alta de restaurante')->with('mensaje',"El restaurante $restaurante->razonsocial fue registrado");
     }
 
-    public function borrarres(){
+    public function desacres($idres){
+        echo "EL elmiminado es :$idres";
         //$eliminado->eliminado;
         //$borrar=restaurantes::find($eliminado);
         //$borrar->delete();
-    }
-
-    public function mostrarres(){
-        //$consulta=municipios::all();
-        //return $consulta;
-        
     }
 
     public function index(){
