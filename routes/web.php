@@ -31,6 +31,13 @@ Route::get('index',[controladorrestaurante::class,'index'])->name('index');
 Route::get('altares',[controladorrestaurante::class,'altares'])->name('altares');
 Route::post('guardarres',[controladorrestaurante::class,'guardarres'])->name('guardarres');
 Route::get('desacres/{idres}',[controladorrestaurante::class,'desacres'])->name('desacres');
+Route::get('activares/{idres}',[controladorrestaurante::class,'activares'])->name('activares');
+Route::get('borrares/{idres}',[controladorrestaurante::class,'borrares'])->name('borrares');
+
+Route::post('guardacares',[controladorrestaurante::class,'guardacares'])->name('guardacares');
+Route::get('modificares/{idres}',[controladorrestaurante::class,'modificares'])->name('modificares');
+
+
 
 Route::get('usuario',[controladorusuario::class,'usuario'])->name('usuario');
 Route::post('validacap',[controladorusuario::class,'validacap'])->name('validacap');

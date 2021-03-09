@@ -154,7 +154,7 @@
 							</li>
 
 							<li class="">
-								<a href="">
+								<a href="{{route('res')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Restaurantes
 								</a>

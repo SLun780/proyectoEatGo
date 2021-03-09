@@ -4,18 +4,19 @@
     <div class="row">
         <div>
             <div>
+                <a class="green" href="{{route('altares')}}">
+                    <i type='button' class='btn btn-info'>Alta Restaurante</i>
+                </a>
                 <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>Clave del restaurante</th>
                             <th>Nombre Restaurante</th>
-                            <th>Nombre de la referencia</th>
+                            <th>Nombre del que contacto</th>
                             <th class="hidden-480">Correo</th>
                             <th>Telefono</th>
-                            <th class="hidden-480">RFC</th>
                             <th>Codigo Postal</th>
                             <th>Categoria</th>
-                            <th>Municipio</th>
                             <th>Operacion</th>
                         </tr>
                     </thead>
@@ -28,20 +29,27 @@
                             <td class="center">{{$res->nombrecontacto}}</td>
                             <td class="center">{{$res->correo}}</td>
                             <td class="center">{{$res->telefono}}</td>
-                            <td class="center">{{$res->rfc}}</td>
                             <td class="center">{{$res->cp}}</td>
-                            <td class="center">{{$res->idcat}}</td>
-                            <td class="center">{{$res->idmun}}</td>
+                            <td class="center">{{$res->categoria}}</td>
                             <td>
                                 <div class="hidden-sm hidden-xs action-buttons center">
 
-                                    <a class="green" href="#">
+                                    <a class="green" href="{{route('modificares',['idres'=>$res->idres])}}">
                                         <i class="ace-icon fa fa-pencil bigger-130"></i>
                                     </a>
 
-                                    <a class="red" href="{{route('desacres',['idres'=>$res->idres])}}">
+                                    @if($res->deleted_at)
+                                        <a class="yellow" href="{{route('activares',['idres'=>$res->idres])}}">
+                                        <i class="ace-icon fa fa-toggle-off bigger-130"></i>
+
+                                        <a class="red" href="{{route('borrares',['idres'=>$res->idres])}}">
                                         <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                     </a>
+                                    @else 
+                                        <a class="green" href="{{route('desacres',['idres'=>$res->idres])}}">
+                                        <i class="ace-icon fa fa-toggle-on bigger-130"></i>
+                                    </a>
+                                    @endif
                                 </div>
 
                                 <div class="hidden-md hidden-lg">
