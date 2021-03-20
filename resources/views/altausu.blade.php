@@ -43,10 +43,10 @@
                                 <div class="p-3">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Bienvenido</h1>
-                                        <h2 class="h4 text-gray-900 mb-4">Login</h2>
+                                        <h2 class="h4 text-gray-900 mb-4">Registrarse</h2>
                                     </div>
                                     <div class="card-body">
-                                        <form class="form-horizontal" role="form" action="{{route('validacap')}}"  method="POST">
+                                        <form class="form-horizontal" role="form" action="{{route('guardausua')}}"  method="POST">
                                             {{csrf_field()}}
                                             <div class="form-group input-group">
                                                 <label class="custom-control-label" for="form-field-1"> Usuario: 
@@ -57,6 +57,18 @@
                         
                                                 <div class="custom-control custom-checkbox small">
                                                     <input type="text" value='{{old('username')}}' name='username' id="username" placeholder="Usuario" class="custom-control-input" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group input-group">
+                                                <label class="custom-control-label" for="form-field-1"> Correo: 
+                                                    @if ($errors->first('correo'))
+                                                    <p class="text-danger">{{$errors->first('correo')}}</p>
+                                                    @endif
+                                                </label>
+                        
+                                                <div class="custom-control custom-checkbox small">
+                                                    <input type="text" value='{{old('correo')}}' name='correo' id="correo" placeholder="Usuario" class="custom-control-input" />
                                                 </div>
                                             </div>
 
@@ -85,6 +97,18 @@
                                                 </div>
                                             </div>
 
+                                            <div class="form-group input-group">
+                                                <label class="custom-control-label" for="form-field-1">Acepto <a href="{{route('politicaspriva')}}">politias de privacidad</a>
+                                                    @if ($errors->first('contraseña'))
+                                                    <p class="text-danger">{{$errors->first('contraseña')}}</p>
+                                                    @endif
+                                                </label>
+                        
+                                                <div class="custom-control custom-checkbox small">
+                                                    <input type="checkbox" value='{{old('contraseña')}}' name='contraseña' id="contraseña" placeholder="Contraseña" class="custom-control-input" />
+                                                </div>
+                                            </div>
+
                                             <div class="space-4"></div>
 
                                             <div class="clearfix form-actions">
@@ -103,8 +127,8 @@
                                             </div>
                                         </form>
                                         <div>
-                                            <a href="{{route('altausua')}}">Registrarse</a>
-                                        </div>
+                                            <a href="{{route('login')}}">Iniciar session</a>
+                                        </div> 
                                     </div>
                                 </div>
                             </div>

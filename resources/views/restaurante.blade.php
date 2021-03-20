@@ -7,6 +7,9 @@
                 <a class="green" href="{{route('altares')}}">
                     <i type='button' class='btn btn-info'>Alta Restaurante</i>
                 </a>
+                @if (Session::has('mensaje'))
+                    <div class="alert alert-success">{{Session::get('mensaje')}}</div>
+                @endif
                 <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>

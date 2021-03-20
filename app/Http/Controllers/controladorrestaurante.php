@@ -8,6 +8,7 @@ use App\Models\municipios;
 use App\Models\estados;
 use App\Models\categorias;
 use App\Models\restaurantes;
+use Session;
 
  
 
@@ -52,36 +53,55 @@ class controladorrestaurante extends Controller
         $restaurante->idest=$request->estado;
         $restaurante->idmun=$request->municipio;
         $restaurante->save();
-        return view ('mensaje')
+        /*return view ('mensaje')
         ->with('proceso','Alta de restaurante')
         ->with('mensaje',"El restaurante $restaurante->razonsocial fue registrado")
-        ->with('error',1);
+        ->with('error',1);*/
+        Session::flash('mensaje',"El restaurante ha sido agregado correctamente");
+        return redirect()->route('res');
     }
 
     public function activares($idres){
         //echo "EL elmiminado es :$idres";
         $restaurante= restaurantes::withTrashed()->where('idres',$idres)->restore();
-        return view('mensaje')
+        /*return view('mensaje')
         ->with('proceso','Activar Restaurantes')
         ->with('mensaje','El restaurante ha sido activado correctamente')
-        ->with('error',1);
+        ->with('error',1);*/
+        Session::flash('mensaje',"El restaurante ha sido activado correctamente");
+        return redirect()->route('res');
     }
     public function desacres($idres){
         //echo "EL elmiminado es :$idres";
         $restaurante= restaurantes::find($idres);
         $restaurante->delete();
-        return view('mensaje')
+        /*return view('mensaje')
         ->with('proceso','Desactivar Restaurantes')
         ->with('mensaje','El restaurante ha sido dado desactivado correctamente')
-        ->with('error',1);
+        ->with('error',1);*/
+        Session::flash('mensaje',"El restaurante ha sido desactivado correctamente");
+        return redirect()->route('res');
     }
     public function borrares($idres){
         //echo "EL elmiminado es :$idres";
+        /*
+        $buscar=nominas::find('idres',idres);
+        $contar=count($buscar);
+        if($contar==0){
         $restaurante= restaurantes::withTrashed()->find($idres)->forceDelete();
-        return view('mensaje')
+        */
+        /*return view('mensaje')
         ->with('proceso','Borrar Restaurantes')
         ->with('mensaje','El restaurante ha sido borrado correctamente')
-        ->with('error',1);
+        ->with('error',1);*/
+        Session::flash('mensaje',"El restaurante ha sido eliminado correctamente");
+        return redirect()->route('res');
+        /*
+        }
+        else{
+        Session::flash('mensaje',"El restaurante no a podido ser eliminado correctamente porque existe registros suyos");
+        return redirect()->route('res');
+        }*/
     }
 
     public function index(){
@@ -128,7 +148,7 @@ class controladorrestaurante extends Controller
             'muni' => 'required',
         ]);
         //echo "$request";
-        $restaurante=restaurantes::find($request->idres);
+        $restaurante=restaurantes::withTrashed()->find($request->idres);
         $restaurante->razonsocial=$request->res;
         $restaurante->nombrecontacto=$request->nombrecont;
         $restaurante->correo=$request->correo;
@@ -140,10 +160,12 @@ class controladorrestaurante extends Controller
         $restaurante->idmun=$request->muni;
         $restaurante->save();
 
-        return view ('mensaje')
+        /*return view ('mensaje')
         ->with('proceso','Modificacion del restaurante')
         ->with('mensaje',"El restaurante $restaurante->razonsocial fue Modificado exitosamente")
-        ->with('error',1);
+        ->with('error',1);*/
+        Session::flash('mensaje',"El restaurante $request->nombrecont ha sido modificado correctamente");
+        return redirect()->route('res');
         
     }
     

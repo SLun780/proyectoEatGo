@@ -131,7 +131,7 @@ return [
     */
 
     'custom' => [
-        'g-recaptcha-response' => [
+        'g-recaptcha' => [
              'required' => 'Por favor marca la casilla "No soy un robot".',
              'captcha' => 'Error de verificación de la captcha para robots. Inténtalo más tarde o contacta con nosotros.',
          ],
