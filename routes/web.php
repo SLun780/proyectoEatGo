@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\controladorrestaurante;
 use App\Http\Controllers\controladorusuario;
+use Illuminate\Support\Facades\Log;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,8 @@ use App\Http\Controllers\controladorusuario;
 */
 
 Route::get('/', function () {
+
+    Log::debug('Log Activado!');
     return view('index');
 });
 

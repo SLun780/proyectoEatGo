@@ -50,13 +50,13 @@
                                             {{csrf_field()}}
                                             <div class="form-group input-group">
                                                 <label class="custom-control-label" for="form-field-1"> Usuario: 
-                                                    @if ($errors->first('username'))
-                                                    <p class="text-danger">{{$errors->first('username')}}</p>
+                                                    @if ($errors->first('usuario'))
+                                                    <p class="text-danger">{{$errors->first('usuario')}}</p>
                                                     @endif
                                                 </label>
                         
                                                 <div class="custom-control custom-checkbox small">
-                                                    <input type="text" value='{{old('username')}}' name='username' id="username" placeholder="Usuario" class="custom-control-input" />
+                                                    <input type="text" value='{{old('usuario')}}' name='usuario' id="usuario" placeholder="Usuario" class="custom-control-input" />
                                                 </div>
                                             </div>
 
@@ -68,12 +68,12 @@
                                                 </label>
                         
                                                 <div class="custom-control custom-checkbox small">
-                                                    <input type="text" value='{{old('correo')}}' name='correo' id="correo" placeholder="Usuario" class="custom-control-input" />
+                                                    <input type="text" value='{{old('correo')}}' name='correo' id="correo" placeholder="Correo" class="custom-control-input" />
                                                 </div>
                                             </div>
 
                                             <div class="form-group input-group">
-                                                <label class="custom-control-label" for="form-field-1"> Contraseña: 
+                                                <label class="custom-control-label" for="form-field-1"> Cotraseña: 
                                                     @if ($errors->first('contraseña'))
                                                     <p class="text-danger">{{$errors->first('contraseña')}}</p>
                                                     @endif
@@ -88,9 +88,9 @@
                                                 <div class='col'>
                                                     <div>
                                                         <div class="g-recaptcha" data-sitekey="6LfSaWoaAAAAAPtXIvIuDIsIMHURQ7V06a0xTh-e"></div>
-                                                        @if ($errors->has('g-recaptcha'))
+                                                        @if ($errors->has('g-recaptcha-response'))
                                                         <span class="text-danger" role="alert">
-                                                            <strong>{{ $errors->first('g-recaptcha') }}</strong>
+                                                            <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
                                                         </span>
                                                         @endif
                                                     </div>
@@ -99,13 +99,13 @@
 
                                             <div class="form-group input-group">
                                                 <label class="custom-control-label" for="form-field-1">Acepto <a href="{{route('politicaspriva')}}">politias de privacidad</a>
-                                                    @if ($errors->first('contraseña'))
-                                                    <p class="text-danger">{{$errors->first('contraseña')}}</p>
+                                                    @if ($errors->first('politica'))
+                                                    <p class="text-danger">{{$errors->first('politica')}}</p>
                                                     @endif
                                                 </label>
                         
                                                 <div class="custom-control custom-checkbox small">
-                                                    <input type="checkbox" value='{{old('contraseña')}}' name='contraseña' id="contraseña" placeholder="Contraseña" class="custom-control-input" />
+                                                    <input type="checkbox" value='{{old('politica')}}' name='politica' id="politica" placeholder="Contraseña" class="custom-control-input" />
                                                 </div>
                                             </div>
 
@@ -115,7 +115,7 @@
                                                 <div class="col-md-offset-3 col-md-9">
                                                     <button class="btn btn-info" type="submit">
                                                         <i class="ace-icon fa fa-check bigger-110"></i>
-                                                        iniciar
+                                                        Guardar
                                                     </button>
 
                                                     &nbsp; &nbsp; &nbsp;

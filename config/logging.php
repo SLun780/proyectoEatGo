@@ -99,6 +99,12 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+        'example-custom-channel' => [
+            'driver' => 'custom',
+            'path'=> storage_path('logs/logs.log'),
+            'via' => App\Logging\logs::class,
+        ],
+    
     ],
 
 ];
