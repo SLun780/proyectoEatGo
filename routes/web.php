@@ -59,5 +59,28 @@ Route::get('borrepar/{idrep}',[RepartidorController::class,'borrarepartidor'])->
 
 Route::get('modrepar/{idrep}',[RepartidorController::class,'ModificaRepartidor'])->name('modrepar');//Modifica repartidor
 Route::post('guardamodrepar',[RepartidorController::class,'guardacambios'])->name('guardamodrepar');//guarda repartidor
+//Clientes------------------------
+Route::get('/nuevopedido',[pedidosController::class,'nuevopedido'])->name('nuevopedido');
+Route::post('/altap',[pedidosController::class,'altap'])->name('altap');
+Route::get('/pedidos',[pedidosController::class,'pedidos'])->name('pedidos');
+Route::get('/desactivap/{idped}',[pedidosController::class,'desactivap'])->name('desactivap');
+Route::get('/borrarp/{idped}',[pedidosController::class,'borrarp'])->name('borrarp');
+Route::get('/modificapedido/{idped}',[pedidosController::class,'modificapedido'])->name('modificapedido');
+Route::post('/guardap/{idped}',[pedidosController::class,'guardap'])->name('guardap');
+
+Route::get('/form',[formController::class,'form'])->name('form');
+Route::post('/guardar',[formController::class,'guardar'])->name('guardar');
+
+Route::get('/registrar',[formController::class,'registrar'])->name('registrar');
+Route::post('/registrarg',[formController::class,'registrarg'])->name('registrarg');
+
+Route::get('/registracliente',[clienteController::class,'vista']);
+Route::post('/altacliente',[clienteController::class,'altacliente'])->name('altacliente');
+Route::get('/mostrarcliente',[clienteController::class,'mostrarcliente'])->name('mostrarcliente');
+Route::get('/desactivac/{idcli}',[clienteController::class,'desactivac'])->name('desactivac');
+Route::get('/activac/{idcli}',[clienteController::class,'activac'])->name('activac');
+Route::get('/borrarc/{idcli}',[clienteController::class,'borrarc'])->name('borrarc');
+Route::get('/modcliente/{idcli}',[clienteController::class,'modcliente'])->name('modcliente');
+Route::post('/guardac/{idcli}',[clienteController::class,'guardac'])->name('guardac');
 
 
