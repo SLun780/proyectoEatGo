@@ -1,7 +1,7 @@
 @extends('navbar')
 @section('contenido')
 <?php $ubi='Restaurante';?>
-    <div class="row">
+    <div class="container">
         <div>
             <div>
                 <a class="green" href="{{route('altares')}}">

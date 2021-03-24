@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\controladorrestaurante;
 use App\Http\Controllers\controladorusuario;
+use App\Http\Controllers\RepartidorController;
 use Illuminate\Support\Facades\Log;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,34 +18,46 @@ use Illuminate\Support\Facades\Log;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
 
     Log::debug('Log Activado!');
     return view('index');
 });
-
+*/
 
 /*Route::get('/res', function () {
     return view('restaurante');
 });
 */
+//restaurantes-----------------------
+Route::get('res',[controladorrestaurante::class,'res'])->name('res');//muestra o consulta
+Route::get('altares',[controladorrestaurante::class,'altares'])->name('altares');//alta resta
+Route::post('guardarres',[controladorrestaurante::class,'guardarres'])->name('guardarres');//registra restaurantes
+Route::get('desacres/{idres}',[controladorrestaurante::class,'desacres'])->name('desacres');//boton activa
+Route::get('activares/{idres}',[controladorrestaurante::class,'activares'])->name('activares');//boton desactiva
+Route::get('borrares/{idres}',[controladorrestaurante::class,'borrares'])->name('borrares');//eliminar restaurante
+Route::post('guardacares',[controladorrestaurante::class,'guardacares'])->name('guardacares');//guardar modificacion
+Route::get('modificares/{idres}',[controladorrestaurante::class,'modificares'])->name('modificares');//modificar
 
-Route::get('res',[controladorrestaurante::class,'res'])->name('res');
-Route::get('index',[controladorrestaurante::class,'index'])->name('index');
-Route::get('altares',[controladorrestaurante::class,'altares'])->name('altares');
-Route::post('guardarres',[controladorrestaurante::class,'guardarres'])->name('guardarres');
-Route::get('desacres/{idres}',[controladorrestaurante::class,'desacres'])->name('desacres');
-Route::get('activares/{idres}',[controladorrestaurante::class,'activares'])->name('activares');
-Route::get('borrares/{idres}',[controladorrestaurante::class,'borrares'])->name('borrares');
-Route::post('guardacares',[controladorrestaurante::class,'guardacares'])->name('guardacares');
-Route::get('modificares/{idres}',[controladorrestaurante::class,'modificares'])->name('modificares');
-
-
+//Usuario------------------------
 Route::get('politicaspriva',[controladorusuario::class,'politicaspriva'])->name('politicaspriva');
 Route::post('guardausua',[controladorusuario::class,'guardausua'])->name('guardausua');
 Route::get('altausua',[controladorusuario::class,'altausua'])->name('altausua');
 Route::get('login',[controladorusuario::class,'login'])->name('login');
 Route::post('validacap',[controladorusuario::class,'validacap'])->name('validacap');
+
+//Repartidor---------------------
+Route::get('repar',[RepartidorController::class,'reporterepartidores'])->name('repar');//Reporte_Repartidores
+
+Route::get('altarepar',[RepartidorController::class,'create'])->name('altarepar');//Crea datos
+Route::post('guardarepar',[RepartidorController::class,'store'])->name('guardarepar');//Guarda datos
+
+Route::get('descrepar/{idrep}',[RepartidorController::class,'desactivarepartidor'])->name('descrepar');//Desactiva reparitdor
+Route::get('actrepar/{idrep}',[RepartidorController::class,'activarepartidor'])->name('actrepar');//Activa repartidor
+Route::get('borrepar/{idrep}',[RepartidorController::class,'borrarepartidor'])->name('borrepar');//Borra repartidor
+
+Route::get('modrepar/{idrep}',[RepartidorController::class,'ModificaRepartidor'])->name('modrepar');//Modifica repartidor
+Route::post('guardamodrepar',[RepartidorController::class,'guardacambios'])->name('guardamodrepar');//guarda repartidor
 
 

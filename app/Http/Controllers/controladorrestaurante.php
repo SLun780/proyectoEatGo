@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 use App\Models\municipios;
 use App\Models\estados;
 use App\Models\categorias;

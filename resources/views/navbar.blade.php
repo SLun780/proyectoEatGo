@@ -163,7 +163,7 @@
 							</li>
 
 							<li class="">
-								<a href="Agrega tu link aqui">
+								<a href="{{route('repar')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Repartidor
 								</a>
