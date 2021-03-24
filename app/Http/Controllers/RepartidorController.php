@@ -273,13 +273,13 @@ class RepartidorController extends Controller
         $repartidores->telemergencia = $request->get('telemergencia');
         $repartidores->id_aviso = $request->get('id_aviso');
 
-        $repartidores->save();
+        $repartidores->save();/*
         return view('mensajes')
         ->with('proceso', "MODIFICA REPARTIDOR")
         ->with('mensaje', "El repartidores $request->nombre $request->app ha sido modificado correctamente")
-        ->with('error',1);
-        /*Session::flash('mensaje', "El repartidores $request->nombre $request->app ha sido desactivado correctamente");
-        return redirect()->route('repar');*/
+        ->with('error',1);*/
+        Session::flash('mensaje', "El repartidores $request->nombre $request->app ha sido desactivado correctamente");
+        return redirect()->route('repar');
             
     }
 }
