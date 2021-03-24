@@ -4,7 +4,7 @@
 @section('contenido')
 <?php $ubi='Repartidor';?>
 
-    {{csrf_field()}}
+    
 
 		<div class="container">
 			<div class="page-header">
@@ -34,7 +34,7 @@
 			</div>					
 
 	 <form action="{{route('guardarepar')}}"  method="POST" ENCTYPE="multipart/form-data" class="form-horizontal form-label-left" enctype="multipart/form-data">
-
+		{{csrf_field()}}
 			<div class="form-group">
 				<label class="col-sm-3 control-label no-padding-right" for="nombre" required> No. Repartidor: </label>
 				<!--<div class="col-sm-9">-->

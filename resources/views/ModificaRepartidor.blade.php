@@ -3,7 +3,7 @@
 
 @section('contenido')
 <?php $ubi='Repartidor';?>
-{{csrf_field()}}
+
 	<div class="container">
 		<div class="page-header">
 				<h1>
@@ -32,7 +32,7 @@
 			</div>					
 
 	 <form action="{{url('guardamodrepar')}}"  method="POST" ENCTYPE="multipart/form-data" class="form-horizontal form-label-left" enctype="multipart/form-data">
-		
+		{{csrf_field()}}	
 	
 
 			<!--<div class="form-group">
