@@ -19,6 +19,7 @@
                 <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>Foto de restaurante</th>
                             <th>Clave del restaurante</th>
                             <th>Nombre Restaurante</th>
                             <th>Nombre del que contacto</th>
@@ -33,6 +34,7 @@
                     <tbody>
                         @foreach ($resta as $res)
                         <tr>
+                            <td><img src="{{asset('archivos/'.$res->img)}}" height="50" width="50"></td>
                             <td class="center">{{$res->idres}}</td>
                             <td class="center">{{$res->razonsocial}}</td>
                             <td class="center">{{$res->nombrecontacto}}</td>

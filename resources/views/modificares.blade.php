@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-xs-12">
         <!-- PAGE CONTENT BEGINS -->
-        <form class="form-horizontal" role="form" action="{{route('guardacares')}}" method="POST">
+        <form class="form-horizontal" role="form" action="{{route('guardacares')}}" method="POST" enctype='multipart/form-data'>
             {{csrf_field()}}
 
             <div class="form-group">
@@ -140,6 +140,22 @@
                     <option value="{{$est->idest}}">{{$est->estado}}</option>
                     @endforeach				
                 </select>
+                </div>
+            </div>
+            <div class="form-group">
+                @if($errors->first('foto'))
+                  <div class="alert alert-danger" >
+                    <button type="button" class="close" data-dismiss="alert">
+                      <i class="ace-icon fa fa-times"></i>
+                    </button>
+                    {{ $errors->first('foto') }}
+                    <br />
+                  </div>
+                @endif
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Foto de perfil: </label>
+                <div class="col-sm-6">
+                  <input type="file" class="col-xs-2 col-sm-6" id="id-input-file-2" name="foto"/>
+                  <img src="{{asset('archivos/'.$restaurante->img)}}" height="150" width="150">
                 </div>
             </div>
 

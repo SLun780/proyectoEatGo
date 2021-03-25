@@ -31,6 +31,16 @@ class controladorrestaurante extends Controller
     public function guardarres(Request $request){
         //return $request;
         //dd($request);
+        $consulta=restaurantes::orderBy('idres','DESC')
+                                ->take(1)->get();
+        $cuantos = count($consulta);
+        if($cuantos==0)
+        {
+            $idres = 1;
+        }
+        else{
+            $idres = $consulta[0]->idres + 1;
+        }
         $this->validate($request,[
             'res' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú]+$/',
             'nombrecont' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú]+$/',
@@ -43,6 +53,15 @@ class controladorrestaurante extends Controller
             'municipio' => 'required',
         ]);
 
+        $file = $request->file('foto');
+       if($file<>""){
+       $foto = $file->getClientOriginalName();
+       $foto2 = $idres. $foto;
+       \Storage::disk('local')->put($foto2, \File::get($file));
+       }else{
+         $foto2 = "sinfoto.jpg";
+       }
+
         $restaurante=new restaurantes;
         $restaurante->razonsocial=$request->res;
         $restaurante->nombrecontacto=$request->nombrecont;
@@ -53,6 +72,7 @@ class controladorrestaurante extends Controller
         $restaurante->idcat=$request->categoria;
         $restaurante->idest=$request->estado;
         $restaurante->idmun=$request->municipio;
+        $restaurante->img=$foto2;
         $restaurante->save();
         /*return view ('mensaje')
         ->with('proceso','Alta de restaurante')
@@ -111,7 +131,7 @@ class controladorrestaurante extends Controller
     
     public function res(){
         $restaurante=restaurantes::withTrashed()->join('categorias','restaurantes.idcat','=','categorias.idcat')
-        ->select('restaurantes.idres','restaurantes.razonsocial','restaurantes.nombrecontacto','restaurantes.correo','restaurantes.telefono','restaurantes.cp','restaurantes.deleted_at','categorias.categoria')
+        ->select('restaurantes.idres','restaurantes.img','restaurantes.razonsocial','restaurantes.nombrecontacto','restaurantes.correo','restaurantes.telefono','restaurantes.cp','restaurantes.deleted_at','categorias.categoria')
         ->orderBy('restaurantes.razonsocial')
         ->get();
         return view ('restaurante')->with('resta',$restaurante);
@@ -120,7 +140,7 @@ class controladorrestaurante extends Controller
         $restaurante=restaurantes::withTrashed()->join('categorias','restaurantes.idcat','=','categorias.idcat')
         ->join('estados','restaurantes.idest','=','estados.idest')
         ->join('municipios','restaurantes.idmun','=','municipios.idmun')
-        ->select('restaurantes.idres','restaurantes.razonsocial','restaurantes.nombrecontacto','restaurantes.correo','restaurantes.telefono','restaurantes.rfc','restaurantes.cp','restaurantes.deleted_at','categorias.categoria','categorias.idcat AS idcate','estados.estado','estados.idest as idesta','municipios.municipio','municipios.idmun as idmuni')
+        ->select('restaurantes.idres','restaurantes.img','restaurantes.razonsocial','restaurantes.nombrecontacto','restaurantes.correo','restaurantes.telefono','restaurantes.rfc','restaurantes.cp','restaurantes.deleted_at','categorias.categoria','categorias.idcat AS idcate','estados.estado','estados.idest as idesta','municipios.municipio','municipios.idmun as idmuni')
         ->where('idres',$idres)
         ->get();
         $estado=estados::all();
@@ -149,6 +169,14 @@ class controladorrestaurante extends Controller
             'muni' => 'required',
         ]);
         //echo "$request";
+        
+        $file = $request->file('foto');
+         if($file<>""){
+         $foto = $file->getClientOriginalName();
+         $foto2 = $request->idres . $foto;
+         \Storage::disk('local')->put($foto2, \File::get($file));
+         }
+
         $restaurante=restaurantes::withTrashed()->find($request->idres);
         $restaurante->razonsocial=$request->res;
         $restaurante->nombrecontacto=$request->nombrecont;
@@ -159,13 +187,16 @@ class controladorrestaurante extends Controller
         $restaurante->idcat=$request->cate;
         $restaurante->idest=$request->esta;
         $restaurante->idmun=$request->muni;
+        if($file<>""){
+            $restaurante->img = $foto2;
+             }
         $restaurante->save();
 
         /*return view ('mensaje')
         ->with('proceso','Modificacion del restaurante')
         ->with('mensaje',"El restaurante $restaurante->razonsocial fue Modificado exitosamente")
         ->with('error',1);*/
-        Session::flash('mensaje',"El restaurante $request->nombrecont ha sido modificado correctamente");
+        Session::flash('mensaje',"El restaurante $request->razonsocial ha sido modificado correctamente");
         return redirect()->route('res');
         
     }

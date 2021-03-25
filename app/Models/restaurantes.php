@@ -12,5 +12,5 @@ class restaurantes extends Model
     use Softdeletes;
     
     protected $primaryKey='idres';
-    protected $fillable=['idres','razonsocial','nombrecontacto','correo','telefono','rfc','cp','idcat','idest','idmun'];
+    protected $fillable=['idres','razonsocial','nombrecontacto','correo','telefono','rfc','cp','idcat','idest','img','idmun'];
 }

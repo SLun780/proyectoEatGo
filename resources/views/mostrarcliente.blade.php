@@ -1,7 +1,7 @@
 @extends('navbar')
 
 @section('contenido')
-<?php $ubi='Registro de Cliente';?>
+<?php $ubi='Clientes registrados';?>
 
 <body class="no-skin">
 
