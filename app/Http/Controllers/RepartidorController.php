@@ -202,7 +202,7 @@ class RepartidorController extends Controller
         ->join('vehiculos', 'repartidores.idve', '=', 'vehiculos.idve')
         ->select('repartidores.idrep','repartidores.nombre','repartidores.app','repartidores.apm','repartidores.colonia',
                 'repartidores.nss','repartidores.fechaingreso','repartidores.horariotrabajo','repartidores.telemergencia',
-                'municipios.municipio as muni','estados.estado as esta','vehiculos.vehiculo as ve','repartidores.edad',
+                'municipios.idmun','municipios.municipio as muni','estados.idest','estados.estado as esta','vehiculos.idve','vehiculos.vehiculo as ve','repartidores.edad',
                 'repartidores.fechaingreso','repartidores.fechanacimiento','repartidores.nss','repartidores.sexo','repartidores.calle',
                 'repartidores.colonia','repartidores.cp','repartidores.nombremergencia','repartidores.telemergencia',
             'repartidores.img'

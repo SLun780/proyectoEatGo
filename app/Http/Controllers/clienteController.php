@@ -106,7 +106,7 @@ class clienteController extends Controller
 
       public function modcliente($idcli){
 
-         $clientes = clientes::findOrFail($idcli);
+         $clientes = clientes::withTrashed()->findOrFail($idcli);
          $estado = DB::SELECT("SELECT estado,idest FROM estados ");
          //$estado = \DB::table('estado')->pluck('estado','idest');
          $municipio = DB::SELECT("SELECT municipio,idmun FROM municipios ");
