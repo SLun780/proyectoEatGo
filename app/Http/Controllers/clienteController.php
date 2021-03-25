@@ -8,16 +8,17 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
 use Redirect;
 use App\Models\clientes;
-use App\Models\estado;
-use App\Models\municipio;
+use App\Models\estados;
+use App\Models\municipios;
 use App\Models\tarjeta;
+
 
 class clienteController extends Controller
 {
-    public function vista(){
-      $estado = estado::all();
-      $municipio = municipio::all();
-      return view('sistema.registracliente',compact("estado","municipio"));
+    public function vista(){ 
+      $estado = estados::all();
+      $municipio = municipios::all();
+      return view('registracliente',compact("estado","municipio"));
     }
 
     public function altacliente(Request $request){
@@ -72,7 +73,7 @@ class clienteController extends Controller
       public function mostrarcliente(){
         $clientes = clientes::withTrashed()->with('estado','municipio')
         ->paginate('10');
-        return view ('sistema.mostrarcliente')->with('clientes',$clientes);
+        return view ('mostrarcliente')->with('clientes',$clientes);
       }
 
       public function desactivac($idcli){
@@ -106,13 +107,13 @@ class clienteController extends Controller
       public function modcliente($idcli){
 
          $clientes = clientes::findOrFail($idcli);
-         $estado = DB::SELECT("SELECT estado,idest FROM estado ");
+         $estado = DB::SELECT("SELECT estado,idest FROM estados ");
          //$estado = \DB::table('estado')->pluck('estado','idest');
-         $municipio = DB::SELECT("SELECT municipio,idmun FROM municipio ");
+         $municipio = DB::SELECT("SELECT municipio,idmun FROM municipios ");
          //$municipio = \DB::table('municipio')->pluck('municipio','idmun');
 
          //dd($estado);
-        return view('sistema.modcliente', compact('clientes','estado','municipio'));
+        return view('modcliente', compact('clientes','estado','municipio'));
       }
 
       public function guardac(Request $request, $idcli){

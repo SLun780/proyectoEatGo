@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\controladorrestaurante;
 use App\Http\Controllers\controladorusuario;
 use App\Http\Controllers\RepartidorController;
+use App\Http\Controllers\clienteController;
 use Illuminate\Support\Facades\Log;
 
 
@@ -60,6 +61,7 @@ Route::get('borrepar/{idrep}',[RepartidorController::class,'borrarepartidor'])->
 Route::get('modrepar/{idrep}',[RepartidorController::class,'ModificaRepartidor'])->name('modrepar');//Modifica repartidor
 Route::post('guardamodrepar',[RepartidorController::class,'guardacambios'])->name('guardamodrepar');//guarda repartidor
 //Clientes------------------------
+/*
 Route::get('/nuevopedido',[pedidosController::class,'nuevopedido'])->name('nuevopedido');
 Route::post('/altap',[pedidosController::class,'altap'])->name('altap');
 Route::get('/pedidos',[pedidosController::class,'pedidos'])->name('pedidos');
@@ -72,9 +74,9 @@ Route::get('/form',[formController::class,'form'])->name('form');
 Route::post('/guardar',[formController::class,'guardar'])->name('guardar');
 
 Route::get('/registrar',[formController::class,'registrar'])->name('registrar');
-Route::post('/registrarg',[formController::class,'registrarg'])->name('registrarg');
+Route::post('/registrarg',[formController::class,'registrarg'])->name('registrarg');*/
 
-Route::get('/registracliente',[clienteController::class,'vista']);
+Route::get('/registracliente',[clienteController::class,'vista'])->name('registracliente');
 Route::post('/altacliente',[clienteController::class,'altacliente'])->name('altacliente');
 Route::get('/mostrarcliente',[clienteController::class,'mostrarcliente'])->name('mostrarcliente');
 Route::get('/desactivac/{idcli}',[clienteController::class,'desactivac'])->name('desactivac');

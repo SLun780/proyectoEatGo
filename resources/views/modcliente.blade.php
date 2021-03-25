@@ -1,6 +1,7 @@
-@extends('sistema.principal')
+@extends('navbar')
 
 @section('contenido')
+<?php $ubi='Modifica de Cliente';?>
 <center><h3>Modifica cliente</h3></center>
 
 <form class="form-horizontal" action="{{ route('guardac',$clientes->idcli) }}" method="post" enctype='multipart/form-data'>

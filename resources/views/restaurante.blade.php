@@ -10,6 +10,12 @@
                 @if (Session::has('mensaje'))
                     <div class="alert alert-success">{{Session::get('mensaje')}}</div>
                 @endif
+                <div class="clearfix">
+                    <div class="pull-right tableTools-container"></div>
+                  </div>
+                  <div class="table-header">
+                    Restaurantes registrados
+                  </div>
                 <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>

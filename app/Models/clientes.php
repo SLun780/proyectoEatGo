@@ -15,16 +15,16 @@ class clientes extends Model
     protected $fillable = ['idcli','nombre', 'app', 'apm', 'sexo', 'edad', 'telefono', 'idest', 'idmun', 'colonia', 'calle', 'cp', 'foto', 'correo', 'contraseña'];
 
     public function pedido(){
-    return $this->hasMany(pedido::class,'idcli');
+    return $this->hasMany(pedidos::class,'idcli');
     }
 
     public function estado()
     {
-      return $this->belongsTo(estado::class,'idest','idest');
+      return $this->belongsTo(estados::class,'idest','idest');
     }
 
     public function municipio()
     {
-      return $this->belongsTo(municipio::class,'idmun','idmun');
+      return $this->belongsTo(municipios::class,'idmun','idmun');
     }
 }

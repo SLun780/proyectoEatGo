@@ -145,7 +145,7 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="tables.html">
+								<a href="{{route('mostrarcliente')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Usuarios
 								</a>

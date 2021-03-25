@@ -1,6 +1,7 @@
-@extends('sistema.principal')
+@extends('navbar')
 
 @section('contenido')
+<?php $ubi='Registro de Cliente';?>
   <center><h3>Registro de cliente</h3></center>
 
   <form class="form-horizontal" action="{{route('altacliente')}}" method="post" enctype='multipart/form-data'>

@@ -1,6 +1,7 @@
-@extends('sistema.principal')
+@extends('navbar')
 
 @section('contenido')
+<?php $ubi='Registro de Cliente';?>
 
 <body class="no-skin">
 
@@ -11,6 +12,16 @@
                     <i class="ace-icon fa fa-pencil-square-o bigger-120 blue"></i>
                     Nuevo Cliente</a>
 
+                    @if(Session::has('message'))
+                      <div class="alert alert-warning" >
+                        <button type="button" class="close" data-dismiss="alert">
+                          <i class="ace-icon fa fa-times"></i>
+                        </button>
+                        <strong>{{Session::get('message')}}</strong>
+                        <br />
+                      </div>
+                    @endif
+                    
                   <div class="clearfix">
                     <div class="pull-right tableTools-container"></div>
                   </div>
@@ -22,15 +33,7 @@
 
                   <!-- div.dataTables_borderWrap -->
                   <div>
-                    @if(Session::has('message'))
-                      <div class="alert alert-warning" >
-                        <button type="button" class="close" data-dismiss="alert">
-                          <i class="ace-icon fa fa-times"></i>
-                        </button>
-                        <strong>{{Session::get('message')}}</strong>
-                        <br />
-                      </div>
-                    @endif
+                    
                     <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                       <thead>
                         <tr>
