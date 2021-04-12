@@ -27,7 +27,7 @@ class clienteController extends Controller
          'nombre'=>'required|min:4|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ü]+$/',
          'app'=>'required|min:4|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ü]+$/',
          'apm'=>'required|min:4|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ü]+$/',
-         'sexo'=>'required',
+         'sexo'=>'required', 
          'edad'=>'required|regex:/^[0-9]{2}+$/',
          'telefono'=>'required|min:8|max:10|regex:/^[0-9]{10}+$/',
          'colonia'=>'required|regex:/^([0-9a-zA-ZÃ±Ã‘Ã¡Ã©Ã­Ã³ÃºÃÃ‰ÃÃ“Ãš_-])+((\s*)+([0-9a-zA-ZÃ±Ã‘Ã¡Ã©Ã­Ã³ÃºÃÃ‰ÃÃ“Ãš_-]*)*)+$/',

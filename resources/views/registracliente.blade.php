@@ -20,7 +20,7 @@
     <div class="form-group">
       @if($errors->first('nombre'))
         <div class="alert alert-danger" >
-          <button type="button" class="close" data-dismiss="alert">
+          <button type="button" class="close"  data-dismiss="alert">
             <i class="ace-icon fa fa-times"></i>
           </button>
           {{ $errors->first('nombre') }}
