@@ -77,7 +77,7 @@
         <label>
           <input type="radio" id="sexo1" class="ace" name="sexo" value="M" checked=""/>
           <span class="lbl" for="sexo1"> Masculino</span>
-        </label>
+        </label>  
         <label>
           <input type="radio" id="sexo2" class="ace" name="sexo" value="F"/>
           <span class="lbl" for="sexo2"> Femenino</span>

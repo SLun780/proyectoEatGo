@@ -23,7 +23,7 @@ class clienteController extends Controller
 
     public function altacliente(Request $request){
 
-      $this->validate($request,[
+      $this->validate($request,[ 
          'nombre'=>'required|min:4|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ü]+$/',
          'app'=>'required|min:4|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ü]+$/',
          'apm'=>'required|min:4|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ü]+$/',
